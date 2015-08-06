@@ -5,8 +5,8 @@ RUN ["apt-get", "install", "-y", "wget"]
 WORKDIR /usr/local/bin
 RUN ["wget", "-Oconfd", "https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64"]
 RUN ["chmod", "+x", "confd"]
-RUN ["mkdir", "-p", "/etc/confd/{conf.d,templates} /etc/nginx/sites-enabled"]
-# RUN ["rm", "/etc/nginx/sites-enabled/default"]
+RUN ["mkdir", "-p", "/etc/confd/{conf.d,templates}"]
+RUN ["mkdir", "-p", "/etc/nginx/sites-enabled"]
 COPY nginx.toml /etc/confd/conf.d/
 COPY nginx.tmpl /etc/confd/templates/
 COPY nginx.conf /etc/nginx/
